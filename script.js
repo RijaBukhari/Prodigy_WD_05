@@ -1,13 +1,15 @@
-const WEATHER_API_KEY = '2f56d20cd6d642b88e9112910231709';
-
 let weather = {
-    apikey: WEATHER_API_KEY,
-    fetchWeather: function (city) {
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + this.apikey)
-            .then(response => response.json())
-            .then(data => this.displayWeather(data));
+    "apikey": "2f56d20cd6d642b88e9112910231709",
+    fetchWeather : function (city) {
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" 
+        + city 
+        + "&units=metric&appid=" 
+        + this.apikey)
+        .then((Response) => Response.json())
+        .then((data) => this.displayWeather(data));
     },
-    displayWeather: function (data) {
+
+    displayWeather: function(data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
@@ -19,19 +21,20 @@ let weather = {
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')"
     },
-    search: function () {
+
+    search : function() {
         this.fetchWeather(document.querySelector(".searchbar").value);
     }
 };
 
-document.querySelector(".search button").addEventListener("click", function () {
+document.querySelector(".search button").addEventListener("click", function() {
     weather.search();
 });
 
-document.querySelector(".searchbar").addEventListener("keyup", function (event) {
-    if (event.key == "Enter") {
+document.querySelector(".searchbar").addEventListener("keyup", function(event){
+    if(event.key == "Enter"){
         weather.search();
     }
 });
