@@ -7,7 +7,7 @@
  -  Pure HTML, CSS, JavaScript used.
  
  ## To see the project
-[Live Demo](https://simple-weather-website.netlify.app/)
+<a href="https://simple-weather-website.netlify.app/" target="_blank">Live Demo</a>
 
 ## Preview
 
